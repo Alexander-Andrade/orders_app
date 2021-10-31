@@ -3,6 +3,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.2'
 
+gem 'active_model_serializers', '~> 0.10.12'
+
+gem 'dry-validation', '~> 1.7'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
 # Use postgresql as the database for Active Record
@@ -28,7 +32,9 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot', '~> 6.2'
+  gem 'factory_bot_rails', '~> 6.2'
+  gem 'pry', '~> 0.13.0'
+  gem 'pry-byebug', '~> 3.9'
   gem 'rspec-rails', '~> 5.0', '>= 5.0.2'
 end
 

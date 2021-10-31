@@ -15,11 +15,11 @@ require 'rails_helper'
 
 RSpec.describe Booking::Order, type: :model do
   context 'with associations and validations' do
-    it { is_expected.to have_many(:booking_line_items) }
+    it { is_expected.to have_many(:line_items) }
 
     it { is_expected.to validate_presence_of(:subtotal) }
     it { is_expected.to validate_presence_of(:tax) }
     it { is_expected.to validate_presence_of(:total) }
-    it { is_expected.to validate_presence_of(:booking_line_items) }
+    it { is_expected.to validate_presence_of(:line_items) }
   end
 end

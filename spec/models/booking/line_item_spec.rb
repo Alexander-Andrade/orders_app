@@ -5,8 +5,8 @@
 # Table name: booking_line_items
 #
 #  id               :bigint           not null, primary key
-#  amount           :decimal(16, 2)   not null
-#  quantity         :decimal(16, 2)   not null
+#  amount           :integer          not null
+#  quantity         :integer          not null
 #  subtotal         :decimal(16, 2)   not null
 #  tax              :decimal(16, 2)   not null
 #  total            :decimal(16, 2)   not null
@@ -26,13 +26,13 @@ require 'rails_helper'
 
 RSpec.describe Booking::LineItem, type: :model do
   context 'with associations and validations' do
-    it { is_expected.to belong_to(:booking_order) }
+    it { is_expected.to belong_to(:order) }
 
     it { is_expected.to validate_presence_of(:quantity) }
     it { is_expected.to validate_presence_of(:amount) }
     it { is_expected.to validate_presence_of(:subtotal) }
     it { is_expected.to validate_presence_of(:tax) }
     it { is_expected.to validate_presence_of(:total) }
-    it { is_expected.to validate_presence_of(:booking_order) }
+    it { is_expected.to validate_presence_of(:order) }
   end
 end

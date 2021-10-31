@@ -17,8 +17,8 @@ ActiveRecord::Schema.define(version: 2021_10_30_153342) do
 
   create_table "booking_line_items", force: :cascade do |t|
     t.bigint "booking_order_id", null: false
-    t.decimal "quantity", precision: 16, scale: 2, null: false
-    t.decimal "amount", precision: 16, scale: 2, null: false
+    t.integer "quantity", null: false
+    t.integer "amount", null: false
     t.decimal "subtotal", precision: 16, scale: 2, null: false
     t.decimal "tax", precision: 16, scale: 2, null: false
     t.decimal "total", precision: 16, scale: 2, null: false
