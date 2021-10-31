@@ -12,7 +12,7 @@
 #  updated_at :datetime         not null
 #
 FactoryBot.define do
-  factory :booking_order do
+  factory :booking_order, class: 'Booking::Order' do
     subtotal { 0.0 }
     tax { 0.0 }
     total { 0.0 }

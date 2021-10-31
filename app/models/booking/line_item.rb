@@ -5,8 +5,8 @@
 # Table name: booking_line_items
 #
 #  id               :bigint           not null, primary key
-#  amount           :decimal(16, 2)   not null
-#  quantity         :decimal(16, 2)   not null
+#  amount           :integer          not null
+#  quantity         :integer          not null
 #  subtotal         :decimal(16, 2)   not null
 #  tax              :decimal(16, 2)   not null
 #  total            :decimal(16, 2)   not null
@@ -23,8 +23,14 @@
 #  fk_rails_...  (booking_order_id => booking_orders.id)
 #
 class Booking::LineItem < ApplicationRecord
-  belongs_to :booking_order, class_name: 'Booking::Order'
+  belongs_to :order, class_name: 'Booking::Order',
+                     foreign_key: 'booking_order_id',
+                     inverse_of: :line_items
 
-  validates :amount, :quantity, :subtotal, :tax, :total, :booking_order,
+  validates :amount, :quantity, :subtotal, :tax, :total, :order,
             presence: true
+
+  validates :amount, :quantity, numericality: { greater_than_or_equal_to: 0 }
+
+  TAX_RATE = 0.08
 end

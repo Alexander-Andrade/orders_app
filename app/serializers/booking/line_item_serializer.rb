@@ -22,12 +22,15 @@
 #
 #  fk_rails_...  (booking_order_id => booking_orders.id)
 #
-FactoryBot.define do
-  factory :booking_line_items, class: 'Booking::LineItem' do
-    quantity { 1 }
-    amount { 20 }
-    subtotal { 0.0 }
-    tax { 0.0 }
-    total { 0.0 }
+module Booking
+  class LineItemSerializer < ActiveModel::Serializer
+    attributes %i[
+      id
+      quantity
+      amount
+      subtotal
+      tax
+      total
+    ]
   end
 end
